@@ -6,7 +6,7 @@ public class Hero {
     double defence;
     double HP;
     double MP;
-    String description;
+    public String description;
 
     public Hero(int id, String name, double damage, double agility, double defence, double HP, double MP) {
         this.id = id;
@@ -20,5 +20,10 @@ public class Hero {
 
     public void hit(Hero second_player){
         second_player.HP -= (damage - ((second_player.defence + second_player.agility) / 3));
+    }
+
+    public void show_info(){
+        System.out.printf("ID: %d, Name: %s, Damage: %f, Agility: %f, Defence: %f, HP: %f, MP: %f",
+                id, name, damage, agility, defence, HP, MP);
     }
 }
