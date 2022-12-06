@@ -5,9 +5,9 @@ public class Main {
         Hero h3 = new Hero(3, "Lom", 70, 70, 70, 800, 500);
 
 
-        System.out.println(h2.HP);
+        System.out.println(h2.HP);//700
         h1.hit(h2);
-        System.out.println(h2.HP);
+        System.out.println(h2.HP);// (700 - (100 -  ((100 + 50) / 3 ) = 650
 
         h1.show_info();
     }
