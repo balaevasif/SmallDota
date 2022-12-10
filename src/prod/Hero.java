@@ -1,3 +1,5 @@
+package prod;
+
 public class Hero {
     int id;
     String name;

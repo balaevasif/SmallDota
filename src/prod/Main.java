@@ -1,3 +1,5 @@
+package prod;
+
 public class Main {
     public static void main(String[] args) {
         Hero h1 = new Hero(1, "Vasif", 100, 30, 20, 1000, 300);
