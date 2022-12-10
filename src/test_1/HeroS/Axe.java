@@ -22,22 +22,35 @@ public class Axe extends Hero {
     }
 
     protected void BerserkCall(){
-        defence += BerserkCall_buff;
-        MP -= BerserkCall_MP;
+        if (BerserkCall_MP <= MP) {
+            defence += BerserkCall_buff;
+            MP -= BerserkCall_MP;
+        }
+        else{System.out.println("Недостаточно маны");}
     }
 
     protected void BattleHunger(Hero enemy_hero){
-        enemy_hero.HP -= BattleHunger_damage - enemy_hero.magic_resistance;
-        MP -= BattleHunger_MP;
+
+        if (BattleHunger_damage <= MP){
+            enemy_hero.HP -= BattleHunger_damage - enemy_hero.magic_resistance;
+            MP -= BattleHunger_MP;
+        }
+        else{System.out.println("Недостаточно маны");}
     }
 
     protected void Counter_Helix(Hero enemy_hero){
-        enemy_hero.HP -= Counter_Helix_damage;
-        MP -= Counter_Helix_MP;
+        if (Counter_Helix_MP <= MP){
+            enemy_hero.HP -= Counter_Helix_damage;
+            MP -= Counter_Helix_MP;
+        }
+        else{System.out.println("Недостаточно маны");}
     }
 
     protected void Culling_Blade(Hero enemy_hero){
-        enemy_hero.HP -= Culling_Blade_damage;
-        MP -= Culling_Blade_MP;
+        if (Culling_Blade_MP <= MP){
+            enemy_hero.HP -= Culling_Blade_damage;
+            MP -= Culling_Blade_MP;
+        }
+        else{System.out.println("Недостаточно маны");}
     }
 }
