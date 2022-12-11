@@ -1,4 +1,4 @@
-package test_1.HeroS;
+package test_1.Heros;
 
 public class Sniper extends Hero {
 
@@ -15,18 +15,19 @@ public class Sniper extends Hero {
     protected double Assassinate_damage = 350;
     protected double Assassinate_MP = 350;
 
-    Sniper() {
-        SetDamage(110);
-        SetAgility(40);
-        SetDefence(30);
-        SetHP(850);
-        SetMP(600);
+    public Sniper() {
+        setDamage(110);
+        setAgility(40);
+        setDefence(30);
+        setMagResist(10);
+        setHP(850);
+        setMP(600);
         Hero.id++;
     }
 
     protected void Shrapnel(Hero enemy_hero){
         if (Shrapnel_MP <= MP){
-            enemy_hero.defence -= Shrapnel_debuff;
+            enemy_hero.defence -= Shrapnel_debuff - enemy_hero.magic_resistance;
             MP -= Shrapnel_MP;
         }
         else{System.out.println("Недостаточно маны");}
@@ -53,7 +54,7 @@ public class Sniper extends Hero {
 
     protected void Assassinate(Hero enemy_hero){
         if (Assassinate_MP <= MP) {
-            enemy_hero.HP -= Assassinate_damage;
+            enemy_hero.HP -= Assassinate_damage - enemy_hero.magic_resistance;
             MP -= Assassinate_MP;
         }
         else{System.out.println("Недостаточно маны");}

@@ -1,4 +1,4 @@
-package test_1.HeroS;
+package test_1.Heros;
 
 public abstract class Hero {
 
@@ -15,26 +15,25 @@ public abstract class Hero {
         enemy_hero.HP -= damage - ((enemy_hero.defence + enemy_hero.agility) / 3);
     }
 
-    protected void SetDamage(double damage){
+    protected void setDamage(double damage){
         this.damage = damage;
     }
 
-    protected void SetAgility(double agility){
+    protected void setAgility(double agility){
         this.agility = agility;
     }
 
-    protected void SetDefence(double defence) {
+    protected void setDefence(double defence) {
         this.defence = defence;
     }
-    protected void Set_MagResist(double magic_resistance) {
+    protected void setMagResist(double magic_resistance) {
         this.magic_resistance = magic_resistance;
     }
-
-    protected void SetHP(double HP) {
+    protected void setHP(double HP) {
         this.HP = HP;
     }
 
-    protected void SetMP(double MP) {
+    protected void setMP(double MP) {
         this.MP = MP;
     }
 
