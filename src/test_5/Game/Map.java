@@ -1,6 +1,4 @@
-package test_3.Game;
-
-import test_3.Heroes.Hero;
+package test_5.Game;
 
 public class Map {
     //Game game = new Game();

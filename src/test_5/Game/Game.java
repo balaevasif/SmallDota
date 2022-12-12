@@ -1,6 +1,6 @@
-package test_3.Game;
+package test_5.Game;
 
-import test_3.Heroes.*;
+import test_5.Heroes.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Game {
         System.out.println("Heroes of Radian's");
         for (Hero s:
                 radiantHeroes) {
-            System.out.println(i + ": " + s);
+            System.out.println(i + ": " + s.name);
             i++;
         }
     }
@@ -83,59 +83,43 @@ public class Game {
             direHeroes.remove(turn_p2);
 
         } while (radiant.size() != 2 && dire.size() != 2);
-
-
-        //}
-
-
-
-
-
     }
 
+    public void fight(){
+        while (true){
+            System.out.println("_____________________________");
+            System.out.println("Radiant's team is attacking. ");
+            System.out.println("Choose a hero to move: ");
+            radiantTeam();
+            Scanner chooseHeroRad = new Scanner(System.in);
+            int chosenHero = chooseHeroRad.nextInt() - 1;
+            attackHero = radiant.get(chosenHero);
+            System.out.println(attackHero.name);
+
+            System.out.println("Attack or cast spell? 1-attack, 2-spell");
+            Scanner attOrCast = new Scanner(System.in);
+            int chosenMove = attOrCast.nextInt();
+
+            switch (chosenMove){
+                case 1:
+                    System.out.println("Which a hero do you want to attack? ");
+                    direTeam();
+                    Scanner attack_enemy = new Scanner(System.in);
+                    int which_enemy = attack_enemy.nextInt() - 1;
+                    defendHero = dire.get(which_enemy);
+                    attackHero.Bit(defendHero);
+                case 2:
+                    System.out.println("What is the skill do you want to cast?");
+                    attackHero.show_skills();
+                    Scanner chooseSkill = new Scanner(System.in);
+                    int chosenSkill = chooseSkill.nextInt();
+            }
 
 
-
-//    public Game(){
-//        System.out.println("Choose a hero for radiant: ");
-//        for (Heroes h:
-//                Heroes.values()) {
-//            System.out.println(h.name() + "-" + (h.ordinal()+1));
-//        }
-//
-//        Scanner sc = new Scanner(System.in);
-//        int heroChose = sc.nextInt();
-//        switch (heroChose){
-//            case 1:
-//                radiantHeroes.add(new Axe());
-//            case 2:
-//                radiantHeroes.add(new Sniper());
-//        }
-//
-//        System.out.println("Choose a hero for dire: ");
-//        for (Heroes h:
-//                Heroes.values()) {
-//            System.out.println(h.name() + "-" + (h.ordinal()+1));
-//        }
-//        Scanner sc1 = new Scanner(System.in);
-//        int heroChose1 = sc1.nextInt();
-//        switch (heroChose1){
-//            case 1:
-//                direHeroes.add(new Axe());
-//            case 2:
-//                direHeroes.add(new Sniper());
-//
-//        }
-//    }
-
+        }
+    }
     public String toString(){
         return gameAction;
     }
-
-//    public void turn(){
-//        while (true){
-//            System.out.println("Choose a hero for radiant: ");
-//        }
-//    }
 
 }

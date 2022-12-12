@@ -1,6 +1,6 @@
-package test_3.Game;
+package test_4.Game;
 
-import test_3.Heroes.*;
+import test_4.Heroes.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Game {
         System.out.println("Heroes of Radian's");
         for (Hero s:
                 radiantHeroes) {
-            System.out.println(i + ": " + s);
+            System.out.println(i + ": " + s.name);
             i++;
         }
     }
@@ -83,14 +83,107 @@ public class Game {
             direHeroes.remove(turn_p2);
 
         } while (radiant.size() != 2 && dire.size() != 2);
+    }
+
+    public void fight(){
+        while (true){
+
+            System.out.println("_____________________________");
+            System.out.println("Radiant's team is attacking. ");
+            System.out.println("Choose a hero to move: ");
+            Scanner move = new Scanner(System.in);
+            int hero_move = move.nextInt() - 1;
+            attackHero = radiant.get(hero_move);
+            System.out.println(attackHero.name);
+
+            System.out.println("Which a hero do you want to attack? ");
+
+            direTeam();
+            Scanner enemies = new Scanner(System.in);
+            int which_enemy = enemies.nextInt() - 1;
+            defendHero = dire.get(which_enemy);
+
+            System.out.println("Bit or cast spell?");
+
+            Scanner bitOrCast = new Scanner(System.in);
+
+            int bitorcast = bitOrCast.nextInt() - 1;
+
+            switch (bitorcast){
+                case 1:
+                    attackHero.Bit(defendHero);
+                case 2:
+                    System.out.println("What is skill do you want to use?");
+
+                    attackHero.show_skills();
+
+                    Scanner sc = new Scanner(System.in);
+
+                    int skill = sc.nextInt();
+
+                    if (attackHero.isHeal){
+                        System.out.println("What is teammate do you want to heal?");
+                        radiantTeam();
+
+                        Scanner heal = new Scanner(System.in);
+                        int heal_teammate = heal.nextInt() - 1;
+
+                        attackHero.Cast(skill, radiantHeroes.get(heal_teammate));
+
+                    }
+                    else{
+
+                        attackHero.Cast(skill, defendHero);
+                    }
 
 
-        //}
+
+                    //attackHero.Cast(1, defendHero);
+            }
+
+            System.out.println("_____________________________");
+            System.out.println("Dire's team is attacking. ");
+            System.out.println("Choose a hero to move: ");
+            Scanner move1 = new Scanner(System.in);
+            int hero_move1 = move.nextInt() - 1;
+            defendHero = dire.get(hero_move1);
+            System.out.println(defendHero.name);
+
+            System.out.println("Which a hero do you want to attack? ");
+
+            radiantTeam();
+            Scanner enemies1 = new Scanner(System.in);
+            int which_enemy1 = enemies1.nextInt() - 1;
+            defendHero = dire.get(which_enemy1);
+
+            System.out.println("Bit or cast spell?");
+
+            Scanner bitOrCast1 = new Scanner(System.in);
+
+            int bitorcast1 = bitOrCast1.nextInt() - 1;
+
+            switch (bitorcast1){
+                case 1:
+                    defendHero.Bit(attackHero);
+                case 2:
+                    System.out.println("What is skill do you want to use?");
+
+                    defendHero.show_skills();
+
+                    Scanner sc = new Scanner(System.in);
+                    defendHero.Cast(sc.nextInt(), attackHero);
+
+
+
+                    //attackHero.Cast(1, defendHero);
+            }
 
 
 
 
 
+
+        }
     }
 
 
