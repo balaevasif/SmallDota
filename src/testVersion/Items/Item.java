@@ -1,5 +1,4 @@
-package test_3.Items;
-
+package testVersion.Items;
 public abstract class Item {
     public static int id = 0;
     public String name;
@@ -8,7 +7,7 @@ public abstract class Item {
     public double armor;
     public double HP;
     public double MP;
-    public double magic_resistance;
+    public double magicResistance;
     public String description;
 
     public void setName(String name) {
@@ -35,7 +34,7 @@ public abstract class Item {
     }
 
     public void setMagResist(double magic_resistance) {
-        this.magic_resistance = magic_resistance;
+        this.magicResistance = magic_resistance;
     }
 
     public void setDescription(String description) {

@@ -1,30 +1,33 @@
-package test_4.Heroes;
-
+package testVersion.Heroes;
 public class Omniknight extends Hero {
     public double PurificationHeal = 100;
     public double PurificationMP = 50;
-    public String PurificationDesc = "Heal HP himself or his teammate";
+    public String PurificationDesc = "1. Heal HP himself or his teammate. HP+ " + PurificationHeal + " takes MP: " + PurificationMP;
 
     public double HeavenlyGraceHealMP = 200;
     public double HeavenlyGraceMP = 50;
-    public String HeavenlyGraceDesc = "Heal MP himself or his teammate";
+    public String HeavenlyGraceDesc = "||| 2. Heal MP himself or his teammate. MP+ " + HeavenlyGraceHealMP + " takes MP: " + HeavenlyGraceMP;
 
     public double DegenAuraDef = 10;
     public double DegenAuraDefMP = 100;
-    public String DegenAuraDefDesc = "Add armor himself or his teammate";
+    public String DegenAuraDefDesc = "||| 3. Add armor himself or his teammate. Armor+ " + DegenAuraDef + " takes MP: " + DegenAuraDefMP;
 
-    public double GuardianAngel = 300;
+    public double GuardianAngel = 500;
     public double GuardianAngelMP = 300;
-    public String GuardianAngelDesc = "Heal HP all teammate";
+    public String GuardianAngelDesc = "||| 4. Heal: " + GuardianAngel + " HP and Heal: " + GuardianAngel + " MP takes MP: " + GuardianAngelMP;
 
-    //List<List<String>> s = new ArrayList<>();
-
-    private void getSkills() {
-        skills.put("1. Purification Heal: " + PurificationDesc + " Heal: " + Double.toString(PurificationHeal) + " MP: ", PurificationMP);
-        skills.put("2. Heavenly Grace: " + HeavenlyGraceDesc + " Heal: " + Double.toString(HeavenlyGraceHealMP) + " MP: ", HeavenlyGraceMP);
-        skills.put("3. Degen Aura Def: " + DegenAuraDefDesc + " Armor: " + Double.toString(DegenAuraDef) + " MP: ", DegenAuraDefMP);
-        skills.put("4. Guardian Angel: " + GuardianAngelDesc + " Heal: " + Double.toString(GuardianAngel) + " MP: ", GuardianAngelMP);
+    private void attackOrBuffs() {
+        attackOrBuff.put(1, 2);
+        attackOrBuff.put(2, 2);
+        attackOrBuff.put(3, 2);
+        attackOrBuff.put(4, 2);
     }
+    private void getSkills() {
+        Skills.add(PurificationDesc);
+        Skills.add(HeavenlyGraceDesc);
+        Skills.add(DegenAuraDefDesc);
+        Skills.add(GuardianAngelDesc);
+}
 
     public Omniknight(){
         setName("Omniknight");
@@ -32,22 +35,20 @@ public class Omniknight extends Hero {
         setAgility(60);
         setArmor(80);
         setMagResist(100);
-        setHP(500);
-        setMP(500);
+        setHP(1000);
+        setMP(1500);
         getSkills();
+        attackOrBuffs();
         id++;
     }
-
     public void Purification(Hero teammate){
         if (PurificationMP <= MP) {
-            isHeal = true;
             teammate.HP += PurificationHeal;
             MP -= PurificationMP;
             System.out.println(name + " casts the Purification spell and healing " + PurificationHeal + " HP -> " + teammate.name);
         }
         else{System.out.println("Недостаточно маны");}
     }
-
     public void HeavenlyGrace(Hero teammate){
         if (HeavenlyGraceMP <= MP) {
             teammate.MP += HeavenlyGraceHealMP;
@@ -56,7 +57,6 @@ public class Omniknight extends Hero {
         }
         else{System.out.println("Недостаточно маны");}
     }
-
     public void DegenAura(Hero teammate){
         if (DegenAuraDefMP <= MP) {
             teammate.armor += DegenAuraDefMP;
@@ -65,38 +65,26 @@ public class Omniknight extends Hero {
         }
         else{System.out.println("Недостаточно маны");}
     }
-
-    public void GuardianAngels(Hero teammate1, Hero teammate2, Hero teammate3, Hero teammate4, Hero teammate5){
-        teammate1.HP += GuardianAngel;
-        teammate2.HP += GuardianAngel;
-        teammate3.HP += GuardianAngel;
-        teammate4.HP += GuardianAngel;
-        teammate5.HP += GuardianAngel;
-        MP -= GuardianAngelMP;
-    }
-
     public void GuardianAngels(Hero teammate1){
         if (DegenAuraDefMP <= MP) {
             teammate1.HP += GuardianAngel;
+            teammate1.MP += GuardianAngel;
             MP -= GuardianAngelMP;
             System.out.println(name + " casts the Guardian Angel spell and healing " + GuardianAngel + " HP ->" + teammate1.name);
         }
         else{System.out.println("Недостаточно маны");}
-
     }
 
-
     @Override
-    public void Cast(int spell, Hero enemy) {
-        switch (spell){
-            case 1:
-                Purification(enemy);//teammate
-            case 2:
-                HeavenlyGrace(enemy);
-            case 3:
-                DegenAura(enemy);
-            case 4:
-                GuardianAngels(enemy);
+    public void Cast(int spell, Hero hero) {
+        if (spell == 1){
+            Purification(hero);
+        }else if (spell == 2){
+            HeavenlyGrace(hero);
+        }else if (spell == 3){
+            DegenAura(hero);
+        }else if (spell == 4){
+            GuardianAngels(hero);
         }
     }
 }
