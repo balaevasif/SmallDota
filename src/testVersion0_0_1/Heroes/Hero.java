@@ -1,6 +1,6 @@
-package testVersion.Heroes;
+package testVersion0_0_1.Heroes;
 
-import testVersion.Items.Item;
+import testVersion0_0_1.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public abstract class Hero {
     public byte slotsSize = 3;
     public List<Item> items = new ArrayList<>();
     public TreeMap<Integer, Integer> attackOrBuff = new TreeMap<>();
-    public TreeMap<String, Double> skills = new TreeMap<>();
+    //public TreeMap<String, Double> skills = new TreeMap<>();
     public List<String> Skills = new ArrayList<>();
 
     public void bit(Hero enemy){
@@ -42,8 +42,8 @@ public abstract class Hero {
     public void setArmor(double armor) {
         this.armor = armor;
     }
-    public void setMagResist(double magic_resistance) {
-        this.magicResistance = magic_resistance;
+    public void setMagResist(double magicResistance) {
+        this.magicResistance = magicResistance;
     }
     public void setHP(double HP) {
         this.HP = HP;

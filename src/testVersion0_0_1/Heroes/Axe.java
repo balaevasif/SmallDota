@@ -1,19 +1,19 @@
-package testVersion.Heroes;
+package testVersion0_0_1.Heroes;
 
 public class Axe extends Hero {
-    public double BerserkCallBuff = 10;
-    public double BerserkCallMP = 30;
-    public String BerserkCallBuffDesc = "1. Buff him self armor. Armor +" + BerserkCallBuff + " MP: " + BerserkCallMP;
-    public double BattleHungerDamage = 150;
-    public double BattleHungerMP = 80;
-    public String BattleHungerDesc = "||| 2. Burns enemy. Damage: " + BattleHungerDamage + " MP: " + BattleHungerMP;
-    public double CounterHelixDamage = 200;
-    public double CounterHelixMP = 100;
-    public String CounterHelixDesc = "||| 3. Counter attack enemy. Damage: " + CounterHelixDamage + " MP: " + CounterHelixMP;
+    private double BerserkCallBuff = 50;
+    private double BerserkCallMP = 50;
+    private String BerserkCallBuffDesc = "1. Buff him self armor. Armor +" + BerserkCallBuff + " MP: " + BerserkCallMP;
+    private double BattleHungerDamage = 150;
+    private double BattleHungerMP = 80;
+    private String BattleHungerDesc = "||| 2. Burns enemy. Damage: " + BattleHungerDamage + " MP: " + BattleHungerMP;
+    private double CounterHelixDamage = 200;
+    private double CounterHelixMP = 100;
+    private String CounterHelixDesc = "||| 3. Counter attack enemy. Damage: " + CounterHelixDamage + " MP: " + CounterHelixMP;
 
-    public double CullingBladeDamage = 300;
-    public double CullingBladeMP = 150;
-    public String CullingBladeDesc = "||| 4. Large damage to enemy. Damage: " + CullingBladeDamage + " MP: " + CullingBladeMP;
+    private double CullingBladeDamage = 300;
+    private double CullingBladeMP = 150;
+    private String CullingBladeDesc = "||| 4. Large damage to enemy. Damage: " + CullingBladeDamage + " MP: " + CullingBladeMP;
 
     private void attackOrBuffs() {
         attackOrBuff.put(1, 0);
@@ -30,11 +30,11 @@ public class Axe extends Hero {
 
     public Axe(){
         setName("Axe");
-        setDamage(100);
+        setDamage(200);
         setAgility(20);
         setArmor(40);
         setMagResist(10);
-        setHP(1000);
+        setHP(1500);
         setMP(400);
         getSkills();
         attackOrBuffs();

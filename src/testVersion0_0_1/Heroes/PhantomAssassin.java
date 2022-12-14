@@ -1,18 +1,19 @@
-package testVersion.Heroes;
+package testVersion0_0_1.Heroes;
+
 import java.util.Random;
 public class PhantomAssassin extends Hero {
 
-    public double StiflingDaggerDamage = 150;
-    public double StiflingDaggerMP = 150;
-    public String StiflingDaggerDesc = "1. throws a dagger at the enemy. Damage: " + StiflingDaggerDamage + " MP: " + StiflingDaggerMP;
+    private double StiflingDaggerDamage = 150;
+    private double StiflingDaggerMP = 150;
+    private String StiflingDaggerDesc = "1. throws a dagger at the enemy. Damage: " + StiflingDaggerDamage + " MP: " + StiflingDaggerMP;
 
-    public double BurningManaPoint = 200;
-    public double BurningMP = 50;
-    public String BurningManaPointDesc = "||| 2. burning MP enemy and healing himself, Burning: " + BurningManaPoint + " MP: " + BurningMP;
+    private double BurningManaPoint = 200;
+    private double BurningMP = 50;
+    private String BurningManaPointDesc = "||| 2. burning MP enemy and healing himself, Burning: " + BurningManaPoint + " MP: " + BurningMP;
 
-    public double PhantomStrikeDamage = 400;
-    public double PhantomStrikeMP = 200;
-    public String PhantomStrikeDesc = "||| 3. the hero goes into a rage, causes huge damage, and also injures himself. Damage: " + PhantomStrikeDamage + ". Damage him self :" + PhantomStrikeDamage / 5 + " MP: " + PhantomStrikeMP;
+    private double PhantomStrikeDamage = 400;
+    private double PhantomStrikeMP = 200;
+    private String PhantomStrikeDesc = "||| 3. the hero goes into a rage, causes huge damage, and also injures himself. Damage: " + PhantomStrikeDamage + ". Damage him self :" + PhantomStrikeDamage / 5 + " MP: " + PhantomStrikeMP;
 
     private void attackOrBuffs(){
         attackOrBuff.put(1, 1);
@@ -68,11 +69,15 @@ public class PhantomAssassin extends Hero {
     public void bit(Hero enemy) {
         Random rnd = new Random();
         //super.bit(enemy);
-        int critical = rnd.nextInt(0, 4);
+        int critical = rnd.nextInt(0, 3);
         if (critical == 0){
             enemy.HP -= (damage * 3 - enemy.armor);
             System.out.println(name + " strikes a critical blow and deal " + enemy.name + " " + (damage * 3 - enemy.armor) + " damage");
         }
+        else enemy.HP -= damage - enemy.armor;
+        System.out.println(name + " deal " + enemy.name + " " + (damage - enemy.armor) + " damage");
+        ;
+
     }
     @Override
     public void Cast(int spell, Hero hero) {

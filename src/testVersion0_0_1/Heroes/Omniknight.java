@@ -1,20 +1,21 @@
-package testVersion.Heroes;
+package testVersion0_0_1.Heroes;
+
 public class Omniknight extends Hero {
-    public double PurificationHeal = 100;
-    public double PurificationMP = 50;
-    public String PurificationDesc = "1. Heal HP himself or his teammate. HP+ " + PurificationHeal + " takes MP: " + PurificationMP;
+    private double PurificationHeal = 100;
+    private double PurificationMP = 50;
+    private String PurificationDesc = "1. Heal HP himself or his teammate. HP+ " + PurificationHeal + " takes MP: " + PurificationMP;
 
-    public double HeavenlyGraceHealMP = 200;
-    public double HeavenlyGraceMP = 50;
-    public String HeavenlyGraceDesc = "||| 2. Heal MP himself or his teammate. MP+ " + HeavenlyGraceHealMP + " takes MP: " + HeavenlyGraceMP;
+    private double HeavenlyGraceHealMP = 200;
+    private double HeavenlyGraceMP = 50;
+    private String HeavenlyGraceDesc = "||| 2. Heal MP himself or his teammate. MP+ " + HeavenlyGraceHealMP + " takes MP: " + HeavenlyGraceMP;
 
-    public double DegenAuraDef = 10;
-    public double DegenAuraDefMP = 100;
-    public String DegenAuraDefDesc = "||| 3. Add armor himself or his teammate. Armor+ " + DegenAuraDef + " takes MP: " + DegenAuraDefMP;
+    private double DegenAuraDef = 10;
+    private double DegenAuraDefMP = 100;
+    private String DegenAuraDefDesc = "||| 3. Add armor himself or his teammate. Armor+ " + DegenAuraDef + " takes MP: " + DegenAuraDefMP;
 
-    public double GuardianAngel = 500;
-    public double GuardianAngelMP = 300;
-    public String GuardianAngelDesc = "||| 4. Heal: " + GuardianAngel + " HP and Heal: " + GuardianAngel + " MP takes MP: " + GuardianAngelMP;
+    private double GuardianAngel = 500;
+    private double GuardianAngelMP = 300;
+    private String GuardianAngelDesc = "||| 4. Heal: " + GuardianAngel + " HP and Heal: " + GuardianAngel + " MP takes MP: " + GuardianAngelMP;
 
     private void attackOrBuffs() {
         attackOrBuff.put(1, 2);

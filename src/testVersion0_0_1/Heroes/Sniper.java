@@ -1,9 +1,9 @@
-package testVersion.Heroes;
+package testVersion0_0_1.Heroes;
 
 public class Sniper extends Hero {
-    public double ShrapnelDebuff = 10;
+    public double ShrapnelDebuff = 15;
     public double ShrapnelMP = 30;
-    public String ShrapnelDebuffDesc = "1. Debuff armor enemy and shot. Armor enemy -" + ShrapnelDebuff + " MP: " + ShrapnelMP;
+    public String ShrapnelDebuffDesc = "1. Debuff armor enemy. Armor enemy -" + ShrapnelDebuff + " MP: " + ShrapnelMP;
 
     public double HeadshotDamage = 20;
     public double HeadshotMP = 10;
@@ -33,7 +33,7 @@ public class Sniper extends Hero {
 
     public Sniper() {
         setName("Sniper");
-        setDamage(110);
+        setDamage(150);
         setAgility(40);
         setArmor(30);
         setMagResist(10);
@@ -48,7 +48,7 @@ public class Sniper extends Hero {
         if (ShrapnelMP <= MP){
             enemy.armor -= ShrapnelDebuff;
             MP -= ShrapnelMP;
-            System.out.println(name + " casts the Shrapnel spell and deals " + enemy.name + " " + damage + " урона");
+            System.out.println(name + " casts the Shrapnel spell and debaff " + enemy.name + " armor -" + ShrapnelDebuff);
         }
         else{System.out.println("Недостаточно маны");}
 
@@ -81,7 +81,7 @@ public class Sniper extends Hero {
         }
         else{System.out.println("Недостаточно маны");}
     }
-    
+
     @Override
     public void Cast(int spell, Hero hero) {
         if (spell == 1){

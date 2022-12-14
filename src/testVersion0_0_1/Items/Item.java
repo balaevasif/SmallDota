@@ -1,15 +1,14 @@
-package test_1.Items;
-
+package testVersion0_0_1.Items;
 public abstract class Item {
-    static int id = 0;
-    String name;
-    double damage;
-    double agility;
-    double defence;
-    double HP;
-    double MP;
-    double magic_resistance;
-    String description;
+    public static int id = 0;
+    public String name;
+    public double damage;
+    public double agility;
+    public double armor;
+    public double HP;
+    public double MP;
+    public double magicResistance;
+    public String description;
 
     public void setName(String name) {
         this.name = name;
@@ -23,23 +22,24 @@ public abstract class Item {
         this.agility = agility;
     }
 
-    public void setDefence(double defence) {
-        this.defence = defence;
+    public void setArmor(double armor) {
+        this.armor = armor;
     }
 
     public void setHP(double HP) {
         this.HP = HP;
     }
-
     public void setMP(double MP) {
         this.MP = MP;
     }
 
     public void setMagResist(double magic_resistance) {
-        this.magic_resistance = magic_resistance;
+        this.magicResistance = magic_resistance;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 }
