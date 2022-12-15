@@ -1,6 +1,6 @@
-package testVersion0_0_1.Games;
+package testVersion0_0_2.Games;
 
-import testVersion0_0_1.Heroes.*;
+import testVersion0_0_2.Heroes.*;
 
 
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ public class Game {
 
         direHeroes.add(new Axe());
         direHeroes.add(new PhantomAssassin());
+        direHeroes.add(new WraithKing());
     }
     public void showRadians(){
         int i = 1;
@@ -107,6 +108,7 @@ public class Game {
             } else attackHero = dire.get(chosenHero);
 
             System.out.println(attackHero.name);
+            attackHero.showInfo();
 
             System.out.println("Attack or cast spell? 1-attack, 2-spell");
             Scanner attOrCast = new Scanner(System.in);
@@ -130,6 +132,7 @@ public class Game {
                 if (!defendHero.isAlive()) {
                     if (!move) {
                         dire.remove(defendHero);
+                        attackHero.lvlUp();
                     } else radiant.remove(defendHero);
                 }
             } else if (chosenMove == 2) {
@@ -157,6 +160,7 @@ public class Game {
 
                     if (!defendHero.isAlive()) {
                         dire.remove(defendHero);
+                        attackHero.lvlUp();
                     }
                 }
                 //Buffing him self

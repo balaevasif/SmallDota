@@ -1,6 +1,6 @@
-package testVersion0_0_1;
+package testVersion0_0_2;
 
-import testVersion0_0_1.Games.Game;
+import testVersion0_0_2.Games.Game;
 
 public class Main {
     public static void main(String[] args) {

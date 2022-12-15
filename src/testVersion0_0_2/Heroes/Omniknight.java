@@ -1,4 +1,4 @@
-package testVersion0_0_1.Heroes;
+package testVersion0_0_2.Heroes;
 
 public class Omniknight extends Hero {
     private double PurificationHeal = 100;
@@ -87,5 +87,30 @@ public class Omniknight extends Hero {
         }else if (spell == 4){
             GuardianAngels(hero);
         }
+    }
+
+    @Override
+    public void lvlUp(){
+        super.lvlUp();
+        damage += 130 * lvl;
+        armor += 20 * lvl;
+        agility += 80 * lvl;
+
+        PurificationHeal += 100 * lvl;
+        PurificationMP += 50 * lvl;
+        HeavenlyGraceHealMP += 60 * lvl;
+        HeavenlyGraceMP += 30 * lvl;
+        DegenAuraDef += 30 * lvl;
+        DegenAuraDefMP += 50 * lvl;
+        GuardianAngel += 75 * lvl;
+        GuardianAngelMP += 100 * lvl;
+
+        PurificationDesc = "1. Heal HP himself or his teammate. HP+ " + PurificationHeal + " takes MP: " + PurificationMP;
+        HeavenlyGraceDesc = "||| 2. Heal MP himself or his teammate. MP+ " + HeavenlyGraceHealMP + " takes MP: " + HeavenlyGraceMP;
+        DegenAuraDefDesc = "||| 3. Add armor himself or his teammate. Armor+ " + DegenAuraDef + " takes MP: " + DegenAuraDefMP;
+        GuardianAngelDesc = "||| 4. Heal: " + GuardianAngel + " HP and Heal: " + GuardianAngel + " MP takes MP: " + GuardianAngelMP;
+
+        Skills.clear();
+        getSkills();
     }
 }

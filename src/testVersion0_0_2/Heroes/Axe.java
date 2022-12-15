@@ -1,4 +1,4 @@
-package testVersion0_0_1.Heroes;
+package testVersion0_0_2.Heroes;
 
 public class Axe extends Hero {
     private double BerserkCallBuff = 50;
@@ -14,6 +14,8 @@ public class Axe extends Hero {
     private double CullingBladeDamage = 300;
     private double CullingBladeMP = 150;
     private String CullingBladeDesc = "||| 4. Large damage to enemy. Damage: " + CullingBladeDamage + " MP: " + CullingBladeMP;
+
+
 
     private void attackOrBuffs() {
         attackOrBuff.put(1, 0);
@@ -74,33 +76,38 @@ public class Axe extends Hero {
         else{System.out.println("Недостаточно маны");}
     }
 
-//    @Override
-//    public void cast(int spell, Hero enemy) {
-//        switch (spell){
-//            case 1:
-//                BerserkCall();
-//            case 2:
-//                BattleHunger(enemy);
-//            case 3:
-//                Counter_Helix(enemy);
-//            case 4:
-//                Culling_Blade(enemy);
-//        }
-//    }
-
     @Override
     public void Cast(int spell, Hero hero) {
-        if (spell == 1){
-            BerserkCall();
+        switch (spell) {
+            case 1 -> BerserkCall();
+            case 2 -> BattleHunger(hero);
+            case 3 -> CounterHelix(hero);
+            case 4 -> CullingBlade(hero);
         }
-        else if (spell == 2){
-            BattleHunger(hero);
-        }
-        else if (spell == 3){
-            CounterHelix(hero);
-        }
-        else if (spell == 4){
-            CullingBlade(hero);
-        }
+    }
+
+    @Override
+    public void lvlUp() {
+        super.lvlUp();
+        damage += 15 * lvl;
+        armor += 20 * lvl;
+        agility += 5 * lvl;
+        BerserkCallBuff += 10 * lvl;
+        BerserkCallMP += 15 * lvl;
+        BattleHungerDamage += 30 * lvl;
+        BattleHungerMP += 45 * lvl;
+        CounterHelixDamage += 60 * lvl;
+        CounterHelixMP += 70 * lvl;
+        CullingBladeDamage += 80 * lvl;
+
+        BerserkCallBuffDesc = "1. Buff him self armor. Armor +" + BerserkCallBuff + " MP: " + BerserkCallMP;
+        BattleHungerDesc = "||| 2. Burns enemy. Damage: " + BattleHungerDamage + " MP: " + BattleHungerMP;
+        CounterHelixDesc = "||| 3. Counter attack enemy. Damage: " + CounterHelixDamage + " MP: " + CounterHelixMP;
+        CullingBladeDesc = "||| 4. Large damage to enemy. Damage: " + CullingBladeDamage + " MP: " + CullingBladeMP;
+
+        Skills.clear();
+        getSkills();
+
+
     }
 }

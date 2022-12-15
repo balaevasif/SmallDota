@@ -1,22 +1,22 @@
-package testVersion0_0_1.Heroes;
+package testVersion0_0_2.Heroes;
 
 public class Sniper extends Hero {
-    public double ShrapnelDebuff = 15;
-    public double ShrapnelMP = 30;
-    public String ShrapnelDebuffDesc = "1. Debuff armor enemy. Armor enemy -" + ShrapnelDebuff + " MP: " + ShrapnelMP;
+    private double ShrapnelDebuff = 15;
+    private double ShrapnelMP = 30;
+    private String ShrapnelDebuffDesc = "1. Debuff armor enemy. Armor enemy -" + ShrapnelDebuff + " MP: " + ShrapnelMP;
 
-    public double HeadshotDamage = 20;
-    public double HeadshotMP = 10;
-    public String HeadshotDesc = "||| 2. Buff damage. Damage +" + HeadshotDamage + ". Damage to enemy " + damage + " MP: " + HeadshotMP;
+    private double HeadshotDamage = 20;
+    private double HeadshotMP = 10;
+    private String HeadshotDesc = "||| 2. Buff damage. Damage +" + HeadshotDamage + ". Damage to enemy " + damage + " MP: " + HeadshotMP;
 
-    public double TakeAimDamage = 50;
-    public double TakeAimDebuff = 30;
-    public double TakeAimMP = 100;
-    public String TakeAimDesc = "||| 3. Debuff armor enemy during move and shot. Armor -" + TakeAimDebuff + " Damage: " + TakeAimDamage + " MP: " + TakeAimMP;
+    private double TakeAimDamage = 50;
+    private double TakeAimDebuff = 30;
+    private double TakeAimMP = 100;
+    private String TakeAimDesc = "||| 3. Debuff armor enemy during move and shot. Armor -" + TakeAimDebuff + " Damage: " + TakeAimDamage + " MP: " + TakeAimMP;
 
-    public double AssassinateDamage = 350;
-    public double AssassinateMP = 350;
-    public String AssassinateDesc = "||| 4. Find target and make shot to head enemy. Damage: " + AssassinateDamage + " MP: " + AssassinateMP;
+    private double AssassinateDamage = 350;
+    private double AssassinateMP = 350;
+    private String AssassinateDesc = "||| 4. Find target and make shot to head enemy. Damage: " + AssassinateDamage + " MP: " + AssassinateMP;
 
     private void attackOrBuffs() {
         attackOrBuff.put(1, 1);
@@ -82,16 +82,44 @@ public class Sniper extends Hero {
         else{System.out.println("Недостаточно маны");}
     }
 
+
+
     @Override
     public void Cast(int spell, Hero hero) {
-        if (spell == 1){
-            Shrapnel(hero);
-        }else if (spell == 2){
-            Headshot(hero);
-        }else if (spell == 3){
-            TakeAim(hero);
-        }else if (spell == 4){
-            Assassinate(hero);
+        switch (spell) {
+            case 1 -> Shrapnel(hero);
+            case 2 -> Headshot(hero);
+            case 3 -> TakeAim(hero);
+            case 4 -> Assassinate(hero);
         }
+
+//        if (spell == 1){
+//            Shrapnel(hero);
+//        }else if (spell == 2){
+//            Headshot(hero);
+//        }else if (spell == 3){
+//            TakeAim(hero);
+//        }else if (spell == 4){
+//            Assassinate(hero);
+//        }
+    }
+
+    @Override
+    public void lvlUp() {
+        super.lvlUp();
+
+        damage += 80 * lvl;
+        armor += 5 * lvl;
+        agility += 30 * lvl;
+
+        ShrapnelDebuff += 30 * lvl;
+        ShrapnelMP += 30 * lvl;
+        HeadshotDamage += 50 * lvl;
+        HeadshotMP += 50 * lvl;
+        TakeAimDamage += 40 * lvl;
+        TakeAimDebuff += 40 * lvl;
+        TakeAimMP += 50 * lvl;
+        AssassinateDamage += 75 * lvl;
+        AssassinateMP += 75 * lvl;
     }
 }

@@ -1,4 +1,4 @@
-package testVersion0_0_1.Items;
+package testVersion0_0_2.Items;
 public abstract class Item {
     public static int id = 0;
     public String name;

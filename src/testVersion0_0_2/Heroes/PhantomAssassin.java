@@ -1,4 +1,4 @@
-package testVersion0_0_1.Heroes;
+package testVersion0_0_2.Heroes;
 
 import java.util.Random;
 public class PhantomAssassin extends Hero {
@@ -74,9 +74,10 @@ public class PhantomAssassin extends Hero {
             enemy.HP -= (damage * 3 - enemy.armor);
             System.out.println(name + " strikes a critical blow and deal " + enemy.name + " " + (damage * 3 - enemy.armor) + " damage");
         }
-        else enemy.HP -= damage - enemy.armor;
-        System.out.println(name + " deal " + enemy.name + " " + (damage - enemy.armor) + " damage");
-        ;
+        else {
+            enemy.HP -= damage - enemy.armor;
+            System.out.println(name + " deal " + enemy.name + " " + (damage - enemy.armor) + " damage");
+        }
 
     }
     @Override
@@ -88,5 +89,28 @@ public class PhantomAssassin extends Hero {
         }else if (spell == 3){
             PhantomStrike(hero);
         }
+    }
+
+    @Override
+    public void lvlUp(){
+        super.lvlUp();
+        damage += 100 * lvl;
+        armor += 10 * lvl;
+        agility += 60 * lvl;
+
+        StiflingDaggerDamage += 50 * lvl;
+        StiflingDaggerMP += 50 * lvl;
+        BurningManaPoint += 150 * lvl;
+        BurningMP += 50 * lvl;
+        PhantomStrikeDamage += 100 * lvl;
+        PhantomStrikeMP += 100 * lvl;
+
+        StiflingDaggerDesc = "1. throws a dagger at the enemy. Damage: " + StiflingDaggerDamage + " MP: " + StiflingDaggerMP;
+        BurningManaPointDesc = "||| 2. burning MP enemy and healing himself, Burning: " + BurningManaPoint + " MP: " + BurningMP;
+        PhantomStrikeDesc = "||| 3. the hero goes into a rage, causes huge damage, and also injures himself. Damage: " + PhantomStrikeDamage + ". Damage him self :" + PhantomStrikeDamage / 5 + " MP: " + PhantomStrikeMP;
+
+        Skills.clear();
+        getSkills();
+
     }
 }

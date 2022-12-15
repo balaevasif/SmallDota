@@ -1,6 +1,6 @@
-package testVersion0_0_1.Heroes;
+package testVersion0_0_2.Heroes;
 
-import testVersion0_0_1.Items.Item;
+import testVersion0_0_2.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 public abstract class Hero {
     protected static int id = 0;
+    protected int lvl = 1;
     public String name;
     public double damage;
     public double agility;
@@ -32,28 +33,36 @@ public abstract class Hero {
 
     public abstract void Cast(int spell, Hero hero);
 
-    public void setName(String name){this.name = name;};
-    public void setDamage(double damage){
+    public void showInfo(){
+        System.out.println(name + " HP: " + HP + " MP: " + MP + " Damage: " + damage + " Armor: " + armor + " Agility: " + agility + " LVL: " + lvl);
+    }
+    protected void setName(String name){this.name = name;};
+    protected void setDamage(double damage){
         this.damage = damage;
     }
-    public void setAgility(double agility){
+    protected void setAgility(double agility){
         this.agility = agility;
     }
-    public void setArmor(double armor) {
+    protected void setArmor(double armor) {
         this.armor = armor;
     }
-    public void setMagResist(double magicResistance) {
+    protected void setMagResist(double magicResistance) {
         this.magicResistance = magicResistance;
     }
-    public void setHP(double HP) {
+    protected void setHP(double HP) {
         this.HP = HP;
     }
-    public void setMP(double MP) {
+    protected void setMP(double MP) {
         this.MP = MP;
     }
 
     public boolean isAlive(){
         return HP > 0;
+    }
+
+    public void lvlUp(){
+        lvl++;
+        System.out.println(name + " LVL UP");
     }
 
     public void showSkills(){
@@ -89,6 +98,8 @@ public abstract class Hero {
         }else return 3;
         //return attackOrBuff.get(spell) == 0;
     }
+
+
 
 
 }
