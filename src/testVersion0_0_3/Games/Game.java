@@ -1,7 +1,6 @@
-package testVersion0_0_2.Games;
+package testVersion0_0_3.Games;
 
-import testVersion0_0_2.Heroes.*;
-
+import testVersion0_0_3.Heroes.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.Scanner;
 public class Game {
     Hero attackHero;
     Hero defendHero;
-    Hero turn;
+    Hero Switch;
     //String gameAction;
     boolean move = false;
 
@@ -49,7 +48,6 @@ public class Game {
         showRadians();
         showDires();
     }
-
     public void radiantTeam(){
         System.out.println("Radiant's team: ");
         int i = 1;
@@ -86,7 +84,6 @@ public class Game {
 
         } while (radiant.size() != vs && dire.size() != vs);
     }
-
     public void fight(){
         do {
             System.out.println("_____________________________");
@@ -112,8 +109,8 @@ public class Game {
             attackHero.showInfo();
 
             System.out.println("Attack or cast spell? 1-attack, 2-spell");
-            Scanner attOrCast = new Scanner(System.in);
-            int chosenMove = attOrCast.nextInt();
+            Scanner attOrcast = new Scanner(System.in);
+            int chosenMove = attOrcast.nextInt();
 
             if (chosenMove == 1) {
                 System.out.println("Which a hero do you want to attack? ");
@@ -156,7 +153,7 @@ public class Game {
                     } else defendHero = radiant.get(which_enemy);
 
                     System.out.println(defendHero.name + " HP was " + defendHero.HP);
-                    attackHero.Cast(chosenSkill, defendHero);
+                    attackHero.cast(chosenSkill, defendHero);
                     System.out.println(defendHero.name + " HP became " + defendHero.HP);
 
                     if (!defendHero.isAlive()) {
@@ -166,7 +163,7 @@ public class Game {
                 }
                 //Buffing him self
                 else if (attackHero.kindOfSpell(chosenSkill) == 0) {
-                    attackHero.Cast(chosenSkill, defendHero);
+                    attackHero.cast(chosenSkill, defendHero);
                 }
                 //Healing him self or teammate
                 else if (attackHero.kindOfSpell(chosenSkill) == 2) {
@@ -175,24 +172,33 @@ public class Game {
                     Scanner healTeammate = new Scanner(System.in);
                     int whom = healTeammate.nextInt() - 1;
                     if (!move) {
-                        attackHero.Cast(chosenSkill, radiant.get(whom));
-                    } else attackHero.Cast(chosenSkill, dire.get(whom));
+                        attackHero.cast(chosenSkill, radiant.get(whom));
+                    } else attackHero.cast(chosenSkill, dire.get(whom));
                 }
             }
+
             if (!move) {
-                turn = attackHero;
+                Switch = attackHero;
                 attackHero = defendHero;
-                defendHero = turn;
+                defendHero = Switch;
                 move = true;
             } else {
-                turn = attackHero;
+                Switch = attackHero;
                 attackHero = defendHero;
-                defendHero = turn;
+                defendHero = Switch;
                 move = false;
+            }
+            if (radiant.size() == 0){
+                System.out.println("Dire's victory");
+            }
+            if (dire.size() == 0){
+                System.out.println("Radiant's victory");
             }
         }
         while (radiant.size() != 0 || dire.size() != 0);
     }
+
+
 //    public String toString(){
 //        return gameAction;
 //    }

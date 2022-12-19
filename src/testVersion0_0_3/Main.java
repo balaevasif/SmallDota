@@ -1,8 +1,6 @@
-package testVersion0_0_2;
+package testVersion0_0_3;
 
-import testVersion0_0_2.Games.Game;
-
-import java.util.Scanner;
+import testVersion0_0_3.Games.Game;
 
 public class Main {
     public static void main(String[] args) {

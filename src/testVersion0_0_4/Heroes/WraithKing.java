@@ -1,4 +1,5 @@
-package testVersion0_0_2.Heroes;
+package testVersion0_0_4.Heroes;
+
 
 public class WraithKing extends Hero {
     private double WraithfireBlast = 300;
@@ -9,15 +10,7 @@ public class WraithKing extends Hero {
     private double VampiricSpiritMP = 200;
     private String VampiricSpiritDesc = "||| 2. Activation vampirism MP: " + damage / 3;
 
-    private int lifes = 2;
-//    @Override
-//    public boolean isAlive() {
-//        if (super.isAlive())
-//        if (HP < 0){
-//            return false;
-//        }
-//        else return true;
-//    }
+    //private int lifes = 2;
 
     public WraithKing(){
         setName("WraithKing");
@@ -30,7 +23,6 @@ public class WraithKing extends Hero {
         getSkills();
         attackOrBuffs();
         id++;
-
     }
 
     private void attackOrBuffs() {
@@ -56,19 +48,13 @@ public class WraithKing extends Hero {
     @Override
     public void bit(Hero enemy) {
         super.bit(enemy);
-        //enemy.HP -= damage;
-        if (!VampiricSpirit){
+        if (VampiricSpirit){
             HP += damage / 3;
         }
-
-        infoAboutAttack(enemy);
-//        System.out.println(enemy.name + " HP was: " + enemy.HP);
-//        System.out.println(name + " bites " + enemy.name);
-//        System.out.println(enemy.name + " HP became " + enemy.HP);
     }
 
     @Override
-    public void Cast(int spell, Hero hero) {
+    public void cast(int spell, Hero hero) {
         switch (spell) {
             case 1 -> WraithfireBlast(hero);
             case 2 -> VampiricSpirit();
@@ -93,4 +79,6 @@ public class WraithKing extends Hero {
         Skills.clear();
         getSkills();
     }
+
 }
+

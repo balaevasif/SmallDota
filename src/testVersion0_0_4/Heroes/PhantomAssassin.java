@@ -1,19 +1,21 @@
-package testVersion0_0_2.Heroes;
+package testVersion0_0_4.Heroes;
+
 
 import java.util.Random;
+
 public class PhantomAssassin extends Hero {
 
-    private double StiflingDaggerDamage = 150;
+    private double StiflingDagger = 150;
     private double StiflingDaggerMP = 150;
-    private String StiflingDaggerDesc = "1. throws a dagger at the enemy. Damage: " + StiflingDaggerDamage + " MP: " + StiflingDaggerMP;
+    private String StiflingDaggerDesc = "1. throws a dagger at the enemy. Damage: " + StiflingDagger + " MP: " + StiflingDaggerMP;
 
     private double BurningManaPoint = 200;
     private double BurningMP = 50;
     private String BurningManaPointDesc = "||| 2. burning MP enemy and healing himself, Burning: " + BurningManaPoint + " MP: " + BurningMP;
 
-    private double PhantomStrikeDamage = 400;
+    private double PhantomStrike = 400;
     private double PhantomStrikeMP = 200;
-    private String PhantomStrikeDesc = "||| 3. the hero goes into a rage, causes huge damage, and also injures himself. Damage: " + PhantomStrikeDamage + ". Damage him self :" + PhantomStrikeDamage / 5 + " MP: " + PhantomStrikeMP;
+    private String PhantomStrikeDesc = "||| 3. the hero goes into a rage, causes huge damage, and also injures himself. Damage: " + PhantomStrike + ". Damage him self :" + PhantomStrike / 5 + " MP: " + PhantomStrikeMP;
 
     private void attackOrBuffs(){
         attackOrBuff.put(1, 1);
@@ -40,9 +42,9 @@ public class PhantomAssassin extends Hero {
 
     public void StiflingDagger(Hero enemy){
         if (StiflingDaggerMP <= MP){
-            enemy.HP -= StiflingDaggerDamage - enemy.armor;
+            enemy.HP -= StiflingDagger - enemy.armor;
             MP -= StiflingDaggerMP;
-            System.out.println(name + " casts the Stifling Dagger spell and deals " + enemy.name + " " + (StiflingDaggerDamage - enemy.armor) + " damage");
+            System.out.println(name + " casts the Stifling Dagger spell and deals " + enemy.name + " " + (StiflingDagger - enemy.armor) + " damage");
         }
         else{System.out.println("Недостаточно маны");}
     }
@@ -58,9 +60,9 @@ public class PhantomAssassin extends Hero {
 
     public void PhantomStrike(Hero enemy){
         if (PhantomStrikeMP <= MP){
-            enemy.HP -= PhantomStrikeDamage - enemy.armor;
-            HP -= PhantomStrikeDamage / 5;
-            System.out.println(name + " casts the Phantom Strike spell, deals " + enemy.name + " " + (PhantomStrikeDamage - enemy.armor) + " damage and damage his self: "  + PhantomStrikeDamage / 5 + " damage");
+            enemy.HP -= PhantomStrike - enemy.armor;
+            HP -= PhantomStrike / 5;
+            System.out.println(name + " casts the Phantom Strike spell, deals " + enemy.name + " " + (PhantomStrike - enemy.armor) + " damage and damage his self: "  + PhantomStrike / 5 + " damage");
         }
         else{System.out.println("Недостаточно маны");}
     }
@@ -68,29 +70,31 @@ public class PhantomAssassin extends Hero {
     @Override
     public void bit(Hero enemy) {
         Random rnd = new Random();
-        //super.bit(enemy);
+        //
         int critical = rnd.nextInt(0, 3);
         if (critical == 0){
+
+            System.out.println(enemy.name + " HP was: " + enemy.HP);
             enemy.HP -= (damage * 3 - enemy.armor);
-            infoAboutAttack(enemy);
             System.out.println(name + " strikes a critical blow and deal " + enemy.name + " " + (damage * 3 - enemy.armor) + " damage");
-            infoAboutAttack(enemy);
+            System.out.println(enemy.name + " HP became " + enemy.HP);
+
         }
         else {
-            enemy.HP -= damage - enemy.armor;
-            infoAboutAttack(enemy);
-            System.out.println(name + " deal " + enemy.name + " " + (damage - enemy.armor) + " damage");
+            super.bit(enemy);
+//            System.out.println(enemy.name + " HP was: " + enemy.HP);
+//            enemy.HP -= damage - enemy.armor;
+//            System.out.println(name + " deal " + enemy.name + " " + (damage - enemy.armor) + " damage");
+//            System.out.println(enemy.name + " HP became " + enemy.HP);
         }
 
     }
     @Override
-    public void Cast(int spell, Hero hero) {
-        if (spell == 1){
-            StiflingDagger(hero);
-        }else if (spell == 2){
-            BurningMP(hero);
-        }else if (spell == 3){
-            PhantomStrike(hero);
+    public void cast(int spell, Hero hero) {
+        switch (spell){
+            case 1 -> StiflingDagger(hero);
+            case 2 -> BurningMP(hero);
+            case 3 -> PhantomStrike(hero);
         }
     }
 
@@ -101,16 +105,16 @@ public class PhantomAssassin extends Hero {
         armor += 10 * lvl;
         agility += 60 * lvl;
 
-        StiflingDaggerDamage += 50 * lvl;
+        StiflingDagger += 50 * lvl;
         StiflingDaggerMP += 50 * lvl;
         BurningManaPoint += 150 * lvl;
         BurningMP += 50 * lvl;
-        PhantomStrikeDamage += 100 * lvl;
+        PhantomStrike += 100 * lvl;
         PhantomStrikeMP += 100 * lvl;
 
-        StiflingDaggerDesc = "1. throws a dagger at the enemy. Damage: " + StiflingDaggerDamage + " MP: " + StiflingDaggerMP;
+        StiflingDaggerDesc = "1. throws a dagger at the enemy. Damage: " + StiflingDagger + " MP: " + StiflingDaggerMP;
         BurningManaPointDesc = "||| 2. burning MP enemy and healing himself, Burning: " + BurningManaPoint + " MP: " + BurningMP;
-        PhantomStrikeDesc = "||| 3. the hero goes into a rage, causes huge damage, and also injures himself. Damage: " + PhantomStrikeDamage + ". Damage him self :" + PhantomStrikeDamage / 5 + " MP: " + PhantomStrikeMP;
+        PhantomStrikeDesc = "||| 3. the hero goes into a rage, causes huge damage, and also injures himself. Damage: " + PhantomStrike + ". Damage him self :" + PhantomStrike / 5 + " MP: " + PhantomStrikeMP;
 
         Skills.clear();
         getSkills();
